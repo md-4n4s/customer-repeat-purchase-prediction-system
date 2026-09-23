@@ -1,0 +1,10 @@
+.idea/
+.venv/
+__pycache__/
+*.pyc
+*.csv
+*.db
+*.xlsx
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
