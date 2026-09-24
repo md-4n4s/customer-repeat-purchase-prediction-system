@@ -2,7 +2,7 @@ import sqlite3
 
 import pandas as pd
 
-from __init__ import *
+from . import *
 
 excel = pd.read_excel(RAW_CSV_DIR)
 
