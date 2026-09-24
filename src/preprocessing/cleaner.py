@@ -83,3 +83,28 @@ def clean_invoice_date(df: pd.DataFrame) -> pd.DataFrame:
     df["InvoiceDate"] = pd.to_datetime(df["InvoiceDate"])
 
     return df
+
+
+# ========================================================================
+# --- apply all cleaning functions in the required preprocessing order ---
+# ========================================================================
+def clean_data(df: pd.DataFrame) -> pd.DataFrame:
+    # Standardize column names and string values.
+    df = standardize(df)
+
+    # Remove rows with missing customer IDs.
+    df = clean_customer_id(df)
+
+    # Remove canceled invoices.
+    df = clean_invoice(df)
+
+    # Remove non-product and invalid stock codes.
+    df = clean_stock_code(df)
+
+    # Remove rows with zero or negative prices.
+    df = clean_prices(df)
+
+    # Convert invoice dates to datetime.
+    df = clean_invoice_date(df)
+
+    return df
