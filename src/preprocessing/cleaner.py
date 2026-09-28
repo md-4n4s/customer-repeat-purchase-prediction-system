@@ -90,7 +90,11 @@ def clean_invoice_date(df: pd.DataFrame) -> pd.DataFrame:
 # ========================================================================
 def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     # Standardize column names and string values.
-    df = standardize(df)
+    df = standardize(
+        df,
+        standardize_columns=True,
+        columns=["Invoice", "StockCode", "Description", "Country"],
+    )
 
     # Remove rows with missing customer IDs.
     df = clean_customer_id(df)
