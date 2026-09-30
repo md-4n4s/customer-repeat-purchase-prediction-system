@@ -1,6 +1,7 @@
-from .cleaner import *
-from src.storage.config import INPUT_DIR, CLEAN_CSV_DIR, CLEAN_DB_DIR
+from src.storage.config import CLEAN_CSV_DIR, CLEAN_DB_DIR, INPUT_DIR
 from src.storage.data_io import load_data, save_data
+
+from .cleaner import *
 from .validator import validate
 
 
