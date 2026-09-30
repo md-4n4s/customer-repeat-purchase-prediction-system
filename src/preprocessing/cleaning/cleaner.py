@@ -27,6 +27,14 @@ def standardize(
 
 
 # =========================================================================
+# ---------------- remove completely duplicate rows ----------------------
+# =========================================================================
+def clean_duplicates(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.drop_duplicates()
+    return df
+
+
+# =========================================================================
 # -------------- remove rows with missing customer IDs --------------------
 # =========================================================================
 def clean_customer_id(df: pd.DataFrame) -> pd.DataFrame:
@@ -89,6 +97,9 @@ def clean_invoice_date(df: pd.DataFrame) -> pd.DataFrame:
 # --- apply all cleaning functions in the required preprocessing order ---
 # ========================================================================
 def clean_data(df: pd.DataFrame) -> pd.DataFrame:
+    # Remove duplicate rows
+    df = clean_duplicates(df)
+
     # Standardize column names and string values.
     df = standardize(
         df,
