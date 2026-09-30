@@ -1,6 +1,6 @@
 from .cleaner import *
-from .config import INPUT_DIR
-from .loader import load_data
+from src.storage.config import INPUT_DIR, CLEAN_CSV_DIR, CLEAN_DB_DIR
+from src.storage.data_io import load_data, save_data
 from .validator import validate
 
 
@@ -11,6 +11,10 @@ def preprocessing_pipeline() -> pd.DataFrame:
     cleaned_data = clean_data(df)
 
     validate(cleaned_data)
+
+    save_data(cleaned_data, CLEAN_CSV_DIR)
+
+    save_data(cleaned_data, CLEAN_DB_DIR)
 
     return cleaned_data
 

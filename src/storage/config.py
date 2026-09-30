@@ -4,4 +4,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 RAW_CSV_DIR = BASE_DIR / "data" / "raw" / "online_retail_II.xlsx"
 
-DB_DIR = BASE_DIR / "data" / "database" / "retail.db"
+INPUT_DIR = BASE_DIR / "data" / "raw" / "database" / "retail.db"
+
+CLEAN_CSV_DIR = BASE_DIR / "data" / "clean" / "clean.csv"
+
+CLEAN_DB_DIR = BASE_DIR / "data" / "clean" / "database" / "clean.db"
