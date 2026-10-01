@@ -26,7 +26,7 @@ def create_target(df: pd.DataFrame) -> pd.DataFrame:
     post_cutoff_customers = set(post_cutoff["Customer_ID"].unique())
 
     # Mark customers as 1 if they purchased again during the target period.
-    pre_cutoff["target"] = (
+    pre_cutoff["Target"] = (
         pre_cutoff["Customer_ID"].isin(post_cutoff_customers).astype(int)
     )
 
