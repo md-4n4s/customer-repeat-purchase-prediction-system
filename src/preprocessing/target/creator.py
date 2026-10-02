@@ -3,10 +3,9 @@ import pandas as pd
 from src.storage.config import (
     CLEAN_DB_DIR,
     CLEAN_WITH_TARGET_CSV_DIR,
-    CLEAN_WITH_TARGET_DB_DIR
+    CLEAN_WITH_TARGET_DB_DIR,
 )
 from src.storage.data_io import load_data, save_data
-
 
 
 # ===============================
