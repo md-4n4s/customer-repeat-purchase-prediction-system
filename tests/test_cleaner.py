@@ -64,3 +64,59 @@ def test_clean_invoice() -> None:
     })
 
     pd.testing.assert_frame_equal(result, expected)
+
+def test_clean_stock_code() -> None:
+    original = pd.DataFrame({
+        "StockCode": [
+        "BANK CHARGES",
+        "POST",
+        "D",
+        "M",
+        "C2",
+        "PADS",
+        "ADJUST",
+        "TEST001",
+        "TEST002",
+        "ADJUST2",
+        "SP1002",
+        "ALLOWED",
+        "3938"
+    ]
+    })
+
+    result = clean_stock_code(original)
+
+    expected = pd.DataFrame({
+        "StockCode": [
+            "ALLOWED",
+            "3938"
+        ]
+    })
+
+    pd.testing.assert_frame_equal(result, expected)
+
+def test_clean_prices() -> None:
+    original = pd.DataFrame({
+        "Price": [-2, 0, 23, 0, -4, 111]
+    })
+
+    result = clean_prices(original)
+
+    expected = pd.DataFrame({
+        "Price": [23, 111]
+    })
+
+    pd.testing.assert_frame_equal(result, expected)
+
+def test_clean_invoice_date() -> None:
+    original = pd.DataFrame({
+        "InvoiceDate": ["2006-07-19"]
+    })
+
+    result = clean_invoice_date(original)
+
+    expected = pd.DataFrame({
+        "InvoiceDate": pd.to_datetime(["2006-07-19"])
+    })
+
+    pd.testing.assert_frame_equal(result, expected)
