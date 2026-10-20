@@ -30,7 +30,7 @@ def standardize(
 # ---------------- remove completely duplicate rows ----------------------
 # =========================================================================
 def clean_duplicates(df: pd.DataFrame) -> pd.DataFrame:
-    df = df.drop_duplicates()
+    df = df.drop_duplicates().reset_index(drop=True)
     return df
 
 

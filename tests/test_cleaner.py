@@ -16,3 +16,20 @@ def test_standardize() -> None:
     })
 
     pd.testing.assert_frame_equal(result, expected)
+
+def test_clean_duplicates() -> None:
+    original = pd.DataFrame({
+        "Customer_Id": ["1", "2", "1", "4"],
+        "Customer_Name": ["ALI", "JOHN", "ALI", "JOHN"],
+        "City": ["Karachi", "Karachi", "Karachi", "New York"]
+    })
+
+    result = clean_duplicates(original)
+
+    expected = pd.DataFrame({
+        "Customer_Id": ["1", "2", "4"],
+        "Customer_Name": ["ALI", "JOHN", "JOHN"],
+        "City": ["Karachi", "Karachi", "New York"]
+    })
+
+    pd.testing.assert_frame_equal(result, expected)
