@@ -9,9 +9,6 @@ def standardize(
     columns: list[str] | None = None,
     standardize_columns: bool = False,
 ) -> pd.DataFrame:
-    if standardize_columns:
-        df.columns = df.columns.str.strip().str.replace(" ", "_")
-
     if columns is not None:
         for column in columns:
             df[column] = (
@@ -22,6 +19,9 @@ def standardize(
                 .str.upper()
                 .str.replace(r"\s+", " ", regex=True)
             )
+
+    if standardize_columns:
+        df.columns = df.columns.str.strip().str.replace(" ", "_")
 
     return df
 
