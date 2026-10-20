@@ -70,7 +70,7 @@ def clean_stock_code(df: pd.DataFrame) -> pd.DataFrame:
         "SP1002",
     ]
 
-    df = df[~df["StockCode"].isin(codes_to_remove)]
+    df = df[~df["StockCode"].isin(codes_to_remove)].reset_index(drop=True)
 
     return df
 
@@ -79,7 +79,7 @@ def clean_stock_code(df: pd.DataFrame) -> pd.DataFrame:
 # --------------- remove rows with zero or negative prices ---------------
 # =========================================================================
 def clean_prices(df: pd.DataFrame) -> pd.DataFrame:
-    df = df[df["Price"] > 0]
+    df = df[df["Price"] > 0].reset_index(drop=True)
 
     return df
 
