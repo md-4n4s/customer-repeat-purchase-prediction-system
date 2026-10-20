@@ -47,7 +47,7 @@ def clean_customer_id(df: pd.DataFrame) -> pd.DataFrame:
 # -------------- remove invoices that start with 'C' --------------------
 # =========================================================================
 def clean_invoice(df: pd.DataFrame) -> pd.DataFrame:
-    df = df[~df["Invoice"].str.startswith("C", na=False)]
+    df = df[~df["Invoice"].str.startswith("C", na=False)].reset_index(drop=True)
 
     return df
 
